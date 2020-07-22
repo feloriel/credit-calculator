@@ -15,7 +15,7 @@ class App extends Component {
       {key: 60, value: '5 years'},
       {key: 72, value: '6 years'},
     ],
-    choosenPeriod: 1,
+    chosenPeriod: 1,
     monthlyPrice: 0
   }
 
@@ -28,16 +28,16 @@ class App extends Component {
   }
 
   handleSubmit = event => {
-    const { loan, downPayment, interest, choosenPeriod } = this.state;
+    const { loan, downPayment, interest, chosenPeriod } = this.state;
     event.preventDefault();
-    this.calculateMonthlyPrice(loan, downPayment, interest, choosenPeriod);
+    this.calculateMonthlyPrice(loan, downPayment, interest, chosenPeriod);
   }
 
-  calculateMonthlyPrice = (loan, downPayment, interest, choosenPeriod) => {
+  calculateMonthlyPrice = (loan, downPayment, interest, chosenPeriod) => {
     // Calculating final price without down payment
     const price = loan - (loan * downPayment / 100);
-    // Calculating months in choosen period
-    const period = choosenPeriod * 12;
+    // Calculating months in chosen period
+    const period = chosenPeriod * 12;
     // Calculating interest rate
     const interestRate = interest / 100;
     const monthlyPrice = Math.round((price * interestRate) / (1 - (Math.pow(1 / (1 + interestRate), period))));
@@ -48,7 +48,7 @@ class App extends Component {
   }
 
   render() {
-    const { interest, loan, downPayment, period, choosenPeriod, monthlyPrice } = this.state;
+    const { interest, loan, downPayment, period, chosenPeriod, monthlyPrice } = this.state;
 
     return (
       <React.Fragment>
@@ -58,7 +58,7 @@ class App extends Component {
           loan={loan}
           downPayment={downPayment}
           period={period}
-          choosenPeriod={choosenPeriod}
+          chosenPeriod={chosenPeriod}
           monthlyPrice={monthlyPrice}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}

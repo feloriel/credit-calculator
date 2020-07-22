@@ -7,7 +7,7 @@ class CreditCalculator extends Component {
       loan, 
       downPayment, 
       period, 
-      choosenPeriod, 
+      chosenPeriod, 
       monthlyPrice, 
       handleChange, 
       handleSubmit 
@@ -46,8 +46,8 @@ class CreditCalculator extends Component {
             />
           </div>
           <div className="calculator-form__row">
-            <label htmlFor="choosenPeriod">Period</label>
-            <select name="choosenPeriod" value={choosenPeriod} onChange={handleChange}>
+            <label htmlFor="chosenPeriod">Period</label>
+            <select name="chosenPeriod" value={chosenPeriod} onChange={handleChange}>
               {period.map((option, index) => 
                 <option key={index} value={option.key}>{option.value}</option>
               )}
